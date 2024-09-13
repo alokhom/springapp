@@ -3,12 +3,11 @@
     <groupId>com.example</groupId>
     <artifactId>springapp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>alok</name>
-
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -17,5 +16,43 @@
             <artifactId>spring-context</artifactId>
             <version>6.1.11</version>
         </dependency>
+        <dependency> 
+            <groupId>junit</groupId> 
+            <artifactId>junit</artifactId> 
+            <version>4.13.2</version> 
+            <scope>test</scope> 
+        </dependency> 
     </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <archive>
+            <index>true</index>
+            <manifest>
+              <mainClass>com.example.main.springapp</mainClass>
+            </manifest>
+            <manifestEntries>
+                <Created-By>alok</Created-By>
+            </manifestEntries>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <executions>
+          <execution>
+              <id>make-jar-with-dependencies</id>
+              <phase>package</phase>
+              <goals>
+                  <goal>single</goal>
+              </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
